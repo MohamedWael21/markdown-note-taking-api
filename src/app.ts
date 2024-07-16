@@ -3,11 +3,11 @@ import express from "express";
 import morgan from "morgan";
 import noteRoutes from "./routes/notes.route";
 import golbalHandleError from "./utils/global-handle-error";
+
 const app = express();
 
 app.use(morgan("tiny"));
-
-app.use(express.static("./notes-uploaded"));
+app.use(express.static(process.env.UPLOAD_FOLDER_PATH!));
 
 app.use("/api/notes", noteRoutes);
 
